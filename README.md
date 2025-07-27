@@ -30,4 +30,5 @@ El armadillo de nueve bandas es un mamífero placentario nativo de América. Es 
 
 ### Referencias 
 The-Sequence-Onthology (2020). Specifications [Repositorio de GitHub]. https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
+
 Hickman, D., Johnson, J., Vemulapalli, T., Crisler, J., & Shepherd, R. (2016). Commonly used animal models. In Elsevier eBooks (pp. 117–175). https://doi.org/10.1016/b978-0-12-802151-4.00007-4
