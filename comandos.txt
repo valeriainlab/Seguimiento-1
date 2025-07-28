@@ -1,0 +1,36 @@
+#Activa el entorno bioinfo (que ya debería estar instalado)
+conda activate bioinfo
+
+#Crea una carpeta para almacenar y ejecutar los archivos
+mkdir valeria_vega
+
+#Te dirige a la carpeta
+cd valeria_vega
+
+#Descarga el archivo de Dasypus novemcinctus con el comando wget (url de la carpeta/nombre del archivo).
+wget https://ftp.ensembl.org/pub/current_gff3/dasypus_novemcinctus/Dasypus_novemcinctus.Dasnov3.0.114.gff3.gz
+
+#Descomprime el archivo descargado 
+gunzip Dasypus_novemcinctus.Dasnov3.0.114.gff3.gz
+
+#Número de features: Toma solo la columna 3 busca las líneas que NO empieza por "#"| lo ordena de mayor a menor-cuenta la cantidad de repeticiones de cada categoría y almacena la información en un archivo de texto
+cut -f3 Dasypus_novemcinctus.Dasnov3.0.114.gff3 | grep -v "^#" | sort-uniq-count-rank  > features.txt 
+
+#Cuenta la cantidad de features
+cat features.txt | wc -l
+
+#Numero de regiones de la secuencia (cromosoma) en el archivo
+#Si se refiere a "region"
+grep -v "^#" Dasypus_novemcinctus.Dasnov3.0.114.gff3 | cut -f3 | grep -w "region" | wc -l
+#Si se refiere a "biological_region"
+grep -v "^#" Dasypus_novemcinctus.Dasnov3.0.114.gff3 | cut -f3 | grep "region" | wc -l
+
+#Numero de genes listados en el organismo
+#Si se refiere SOLO a "gene"
+grep -v "^#" Dasypus_novemcinctus.Dasnov3.0.114.gff3| cut -f3 | grep -w "gene"  | wc -l
+#Si incluye todo lo que dice "gene" (gene, ncRNA_gene, pseudogene)
+grep -v "^#" Dasypus_novemcinctus.Dasnov3.0.114.gff3 | cut -f3 | grep "gene" | wc -l
+
+#Imprime en la consola el Top 10 de features más anotados en el genoma
+cat features.txt | head
+
