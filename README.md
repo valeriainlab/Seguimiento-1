@@ -4,24 +4,23 @@ Es un archivo de texto plano, delimitado por tabulaciones, contiene anotaciones 
 Cada línea representa un feature del genoma (genes, exones, regiones, etc). Si un campo no tiene dato, se escribe un punto `(.)`.
 
 Las columnas se asignan de la siguiente forma: 
-| **Columna** | **Descripción**                                                                                 | **Ejemplo**                                |
-| ------------| --------------------------------------------------------------------------------------| ------------------------------------- |
-| seqid       | Identificador de la secuencia (cromosoma, scaffold o contig).                                   | `AAGV03000001.1`, `chr1`                   |
-| source      | Fuente del dato (software o base de datos que generó la anotación).                             | `NCBI`, `GenBank`, `Ensembl`               |
-| type (feature) | Tipo de característica anotada.                                                              | `gene`, `exon`, `CDS`                      |
-| start       | Número de nucleótido donde esta la posición inicial de la característica (base 1).              | `1000`                                     |
-| end         | Número de nucleótido donde esta la posición final de la característica.                         | `5000`                                     |
-| score       | Valor numérico que indica la confiabilidad del feature anotado, puede ser un `P-value`          | `0.95`, `.`                                |
-| strand      | Hebra donde se encuentra: `+` (sentido), `-` (antisentido), `.` (sin hebra), `?` (desconocido). | `+`                                        |
-| phase       | Solo aplica para `CDS`. Indica cuántos nucleótidos sobran antes del próximo codón.             | `0`, `1`, `2` |
-| attributes  | Información adicional en pares `clave=valor`, como su nombre visible o su relación con otros elementos. | `Parent=transcript1` |
+| **Columna** | **Descripción**                                                                                 | **Ejemplo**                           |
+| ------------| ------------------------------------------------------------------------------------------------| ------------------------------------- |
+| seqid       | Identificador de la secuencia (cromosoma, scaffold o contig).                                   | `AAGV03000001.1`, `chr1`              |
+| source      | Fuente del dato (software o base de datos que generó la anotación).                             | `NCBI`, `GenBank`, `Ensembl`          |
+| type (feature) | Tipo de característica anotada.                                                              | `gene`, `exon`, `CDS`                 |
+| start       | Número de nucleótido donde esta la posición inicial de la característica (base 1).              | `1000`                                |
+| end         | Número de nucleótido donde esta la posición final de la característica.                         | `5000`                                |
+| score       | Valor numérico que indica la confiabilidad del feature anotado, puede ser un `P-value`          | `0.95`, `.`                           |
+| strand      | Hebra donde se encuentra: `+` (sentido), `-` (antisentido), `.` (sin hebra), `?` (desconocido). | `+`                                   |
+| phase       | Solo aplica para `CDS`. Indica cuántos nucleótidos sobran antes del próximo codón.              | `0`, `1`, `2`                         |
+| attributes  | Información adicional en pares `clave=valor`, como su nombre visible o su relación con otros elementos. | `Parent=transcript1`          |
 
 Ojo: En genomas que ya estan muy bien secuenciados como el de los humanos, el campo seqid puede verse como `chr1`, `chr2`, etc. En el caso de *Dasypus novemcinctus*, se utilizan identificadores de ensamblaje como AAGV03000001.1, que representan scaffolds o contigs en lugar de cromosomas completamente definidos.
 
 De esta forma, una linea en un formato GFF3 se vería así: 
 
 `chr1      ensembl exon    184114  197611  .       -       .       ID=transcript:ENSDNOT00000002212;Parent=gene:ENS`
-
 
 (The-Sequence-Onthology, 2020)
 ## Organismo: *Dasypus novemcinctus*
@@ -31,11 +30,16 @@ El armadillo de nueve bandas es un mamifero pequeño nativo del sureste de Ameri
 (Ver el archivo `comandos.txt` para ejecutar cada paso.)
 
 ## Resultados del análisis
-**Número total de features:** 18
+**Número total de features:** Al contar las líneas únicas en la columna 3, se obtienen **18** tipos distintos.
 
-**Número de regiones (secuencias únicas):** 612731 si se refiere a las "region", o 46559 secuencias únicas en la columna 1 que representan scaffolds o contigs distintos.
+**Número de regiones (secuencias únicas):** En el encabezado del archivo se escriben las unidades estructurales sobre las que se realizan las anotaciones, utilizando líneas que comienzan con ##sequence-region. Estas muestran los identificadores (seqid) de cada una. En el caso específico del genoma de *Dasypus novemcinctus*, no se cuenta con regiones anotadas sobre cromosomas completos, en cambio, las anotaciones se encuentran sobre scaffolds, de los cuales se identificaron **46 559** únicos.
 
-**Número de genes listados:** 33374
+Para conocer cuántas secuencias únicas existen en el archivo (es decir, cuántas regiones del genoma han sido anotadas), se pueden emplear varias estrategias:
+1. Contar las líneas que comienzan con ##sequence-region en el encabezado.
+2. Identificar los valores únicos en la columna seqid, ya que las anotaciones (como genes, exones, CDS) pueden repetirse en la misma secuencia.
+3. Contar las líneas donde el tipo (type, columna 3) es scaffold, asegurando que el seqid asociado no se repita. Esto funciona solo si cada scaffold está declarado una única vez, como es habitual.
+
+**Número de genes listados:** Este genoma tiene un total de **33 374** genes listados 
 
 **Top 10 de tipos de features más anotados en el genoma:**
 | #  | Tipo               | Cantidad |
