@@ -20,8 +20,12 @@ cut -f3 Dasypus_novemcinctus.Dasnov3.0.114.gff3 | grep -v "^#" | sort-uniq-count
 cat features.txt | wc -l
 
 #Numero de regiones de la secuencia (cromosoma) en el archivo
+#Cuenta el número de sequence-region para saber la cantidad de secuencias únicas anotadas 
+cut -f1 Dasypus_novemcinctus.Dasnov3.0.114.gff3 | grep -c "##sequence-region"
 #Imprime las secuencias únicas anotadas en la columna 1
 cut -f1 Dasypus_novemcinctus.Dasnov3.0.114.gff3 | grep -v "^#" | sort-uniq-count-rank | wc -l
+#Imprime el número de regiones asociadas a scaffolds teniendo en cuenta que cada scaffold este asociado a un unico sequid de la columna 1 
+cut -f1,3 Dasypus_novemcinctus.Dasnov3.0.114.gff3 | grep -v "^#" | grep "scaffold" | sort-uniq-count | wc -l
 
 #Numero de genes listados en el organismo
 #Muestra el conteo de genes por categoría
