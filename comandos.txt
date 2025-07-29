@@ -13,18 +13,14 @@ wget https://ftp.ensembl.org/pub/current_gff3/dasypus_novemcinctus/Dasypus_novem
 #Descomprime el archivo descargado 
 gunzip Dasypus_novemcinctus.Dasnov3.0.114.gff3.gz
 
-#Número de features: Toma solo la columna 3 busca las líneas que NO empieza por "#"| lo ordena de mayor a menor-cuenta la cantidad de repeticiones de cada categoría y almacena la información en un archivo de texto
+#Toma solo la columna 3 y busca las líneas que NO empieza por "#"| lo ordena de mayor a menor-cuenta la cantidad de repeticiones de cada categoría y almacena la información en un archivo de texto
 cut -f3 Dasypus_novemcinctus.Dasnov3.0.114.gff3 | grep -v "^#" | sort-uniq-count-rank  > features.txt 
 
 #Cuenta la cantidad de features
 cat features.txt | wc -l
 
 #Numero de regiones de la secuencia (cromosoma) en el archivo
-#Si se refiere a "region"
-grep -v "^#" Dasypus_novemcinctus.Dasnov3.0.114.gff3 | cut -f3 | grep -w "region" | wc -l
-#Si se refiere a "biological_region"
-grep -v "^#" Dasypus_novemcinctus.Dasnov3.0.114.gff3 | cut -f3 | grep "region" | wc -l
-#Si se refiere a las secuencias únicas anotadas que representan scaffolds o contings en la columna 1 (Podrían o no representar cromosomas completos)
+#Imprime las secuencias únicas anotadas en la columna 1
 cut -f1 Dasypus_novemcinctus.Dasnov3.0.114.gff3 | grep -v "^#" | sort-uniq-count-rank | wc -l
 
 #Numero de genes listados en el organismo
