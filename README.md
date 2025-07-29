@@ -39,7 +39,10 @@ En el encabezado del archivo se escriben las unidades estructurales sobre las qu
   2. Identificar los valores únicos en la columna seqid, ya que las anotaciones (como genes, exones, CDS) pueden repetirse en la misma secuencia.
   3. Contar las líneas donde el feature (columna 3) corresponde a `scaffold`, asegurando que el seqid asociado no se repita.
 ### **Número de genes listados**
-Este genoma tiene un total de **33 374** genes listados 
+Este genoma tiene un total de **33 374** genes, distribuidos de la siguiente manera:
+22711   gene
+9163    ncRNA_gene
+1500    pseudogene
 
 ### **Top 10 de tipos de features más anotados en el genoma**
 | #  | Tipo               | Cantidad |
