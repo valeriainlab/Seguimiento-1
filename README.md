@@ -36,7 +36,7 @@ Al contar las líneas únicas en la columna 3, se obtienen **18** tipos distinto
 En el encabezado del archivo se escriben las unidades estructurales sobre las que se realizan las anotaciones, utilizando líneas que comienzan con `##sequence-region`. Estas muestran los identificadores (seqid) de cada una. En el caso específico del genoma de *Dasypus novemcinctus*, no se cuenta con regiones anotadas sobre cromosomas completos, en cambio, las anotaciones se encuentran sobre scaffolds, de los cuales se identificaron **46 559** únicos.
   Para conocer cuántas secuencias únicas existen en el archivo (es decir, cuántas regiones del genoma han sido anotadas), se pueden emplear varias estrategias:
   1. Contar las líneas que comienzan con `##sequence-region`.
-  2. Identificar los valores únicos en la columna seqid, ya que las anotaciones (como genes, exones, CDS) pueden repetirse en la misma secuencia.
+  2. Identificar los valores únicos en la columna `seqid`, ya que las anotaciones (como genes, exones, CDS) pueden repetirse en la misma secuencia.
   3. Contar las líneas donde el feature (columna 3) corresponde a `scaffold`, asegurando que el seqid asociado no se repita.
 ### **Número de genes listados**
 Este genoma tiene un total de **33 374** genes, distribuidos de la siguiente manera:
