@@ -24,6 +24,8 @@ De esta forma, una linea en un formato GFF3 se vería así:
 
 (The-Sequence-Onthology, 2020)
 ## Organismo: *Dasypus novemcinctus*
+<img width="400" height="222" alt="image" src="https://github.com/user-attachments/assets/de37106a-c073-484e-b21c-e6bff0bb523a" />
+
 El armadillo de nueve bandas es un mamifero pequeño nativo del sureste de America, tiene un caparazón bandeado y una temperatura corporal baja, entre 33 a 35 °C. Por este motivo y por su susceptibilidad y respuesta fisiológica al microorganismo *Mycobacterium leprae*, es un organismo modelo ideal para el estudio de la lepra. Durante su época reproductiva, en la implantación embrionaria siempre se forman cuadruplicados, esta poliembrionía consistente de la especie también lo ha convertido en un modelo de interés para comprender diversos aspectos de la gemelaridad. (Hickman et al., 2016)
 
 ## Comandos utilizados
@@ -41,11 +43,9 @@ En el encabezado del archivo se escriben las unidades estructurales sobre las qu
 ### **Número de genes listados**
 Este genoma tiene un total de **33 374** genes, distribuidos de la siguiente manera:
 
-22711   gene
-
-9163    ncRNA_gene
-
-1500    pseudogene
+* 22711   gene
+* 9163    ncRNA_gene
+* 1500    pseudogene
 
 ### **Top 10 de tipos de features más anotados en el genoma**
 | #  | Tipo               | Cantidad |
