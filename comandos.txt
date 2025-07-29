@@ -28,9 +28,9 @@ grep -v "^#" Dasypus_novemcinctus.Dasnov3.0.114.gff3 | cut -f3 | grep "region" |
 cut -f1 Dasypus_novemcinctus.Dasnov3.0.114.gff3 | grep -v "^#" | sort-uniq-count-rank | wc -l
 
 #Numero de genes listados en el organismo
-#Si se refiere SOLO a "gene"
-grep -v "^#" Dasypus_novemcinctus.Dasnov3.0.114.gff3| cut -f3 | grep -w "gene"  | wc -l
-#Si incluye todo lo que dice "gene" (gene, ncRNA_gene, pseudogene)
+#Muestra el conteo de genes por categoría
+cut -f3 Dasypus_novemcinctus.Dasnov3.0.114.gff3 |  grep -v "^#" | grep "gene"| sort-uniq-count
+#Este comando suma el total de los genes listados (gene, ncRNA_gene, pseudogene)
 grep -v "^#" Dasypus_novemcinctus.Dasnov3.0.114.gff3 | cut -f3 | grep "gene" | wc -l
 
 #Imprime en la consola el Top 10 de features más anotados en el genoma
