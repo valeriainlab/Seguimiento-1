@@ -18,9 +18,9 @@ Las columnas se asignan de la siguiente forma:
 
 Ojo: En genomas que ya estan muy bien secuenciados como el de los humanos, el campo seqid puede verse como `chr1`, `chr2`, etc. En el caso de *Dasypus novemcinctus*, se utilizan identificadores de ensamblaje como AAGV03000001.1, que representan scaffolds o contigs en lugar de cromosomas completamente definidos.
 
-De esta forma, una linea en un formato GFF3 se vería así: 
+De esta forma, una linea en un formato GFF3 se vería así:  
 
-`chr1      ensembl exon    184114  197611  .       -       .       ID=transcript:ENSDNOT00000002212;Parent=gene:ENS`
+  `chr1  ensembl  exon    184114  197611  .  -  .  ID=transcript:ENSDNOT00000002212;Parent=gene:ENS`
 
 (The-Sequence-Onthology, 2020)
 ## Organismo: *Dasypus novemcinctus*
@@ -40,8 +40,11 @@ En el encabezado del archivo se escriben las unidades estructurales sobre las qu
   3. Contar las líneas donde el feature (columna 3) corresponde a `scaffold`, asegurando que el seqid asociado no se repita.
 ### **Número de genes listados**
 Este genoma tiene un total de **33 374** genes, distribuidos de la siguiente manera:
+
 22711   gene
+
 9163    ncRNA_gene
+
 1500    pseudogene
 
 ### **Top 10 de tipos de features más anotados en el genoma**
