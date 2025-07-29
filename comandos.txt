@@ -24,6 +24,8 @@ cat features.txt | wc -l
 grep -v "^#" Dasypus_novemcinctus.Dasnov3.0.114.gff3 | cut -f3 | grep -w "region" | wc -l
 #Si se refiere a "biological_region"
 grep -v "^#" Dasypus_novemcinctus.Dasnov3.0.114.gff3 | cut -f3 | grep "region" | wc -l
+#Si se refiere a las secuencias únicas anotadas que representan scaffolds o contings en la columna 1 (Podrían o no representar cromosomas completos)
+cut -f1 Dasypus_novemcinctus.Dasnov3.0.114.gff3 | grep -v "^#" | sort-uniq-count-rank | wc -l
 
 #Numero de genes listados en el organismo
 #Si se refiere SOLO a "gene"
